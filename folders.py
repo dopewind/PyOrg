@@ -20,10 +20,15 @@ DIRECTORIES = {
     "Python": [".py"],
     "XML": [".xml"],
     "Executables": [".exe"],
-    "SHELL": [".sh"],
+    "Scripts": [".sh", ".cmd", ".bat", ".ps1"],
     "MSI": [".msi"],
     "Registry Files": [".reg"],
-    "Android Apk": [".apk"]
+    "Android Apk": [".apk"],
+    "Rainmeter": [".rmskin"],
+    "Torrents": [".torrent"],
+    "DLLs": [".dll"],
+    "eBooks": [".mobi", ".epub"],
+    "MSApp Installer": [".appx"]
 
 }
 
