@@ -16,9 +16,9 @@ client = Client(account_sid, auth_token)
 # functions
 
 def notify_me(msg):
-    message = client.messages.create(from_='whatsapp:+##########',
+    message = client.messages.create(from_='whatsapp:+14155238886',
                                      body=msg,
-                                     to='whatsapp:+#########')
+                                     to='whatsapp:+919207461949')
 
 
 # actions
