@@ -6,6 +6,8 @@ import os
 
 # variables
 
+# --------------- Store these values in enviornment variables or enter them here ------------------
+
 account_sid = os.environ['twilio_sid']
 auth_token = os.environ['twilio_auth']
 client = Client(account_sid, auth_token)
