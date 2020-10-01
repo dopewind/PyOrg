@@ -18,6 +18,7 @@ def telegram_bot_sendtext(bot_message):
 task = str(sys.argv[1])
 name = str(sys.argv[2])
 
+
 done = 0
 
 if done == 0:
@@ -27,11 +28,19 @@ if done == 0:
     print('Task completed sucessfully')
     print('')
 
+quote = 0
 if name == '':
     name = task
+    quote = 1
 
-msg = '''"''' + name + '''"''' + ' finished running'
+if quote == 0:
+    msg = name + ' finished running'
+elif quote == 1:
+    msg = '''"''' + name + '''"''' + ' finished running'
 
 if done == 1:
     test = telegram_bot_sendtext(msg)
     print('Done!')
+
+
+# -------------------------------------------------------------------------------------------
