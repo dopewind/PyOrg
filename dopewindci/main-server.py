@@ -20,25 +20,8 @@ name = str(sys.argv[2])
 
 
 done = 0
-alias = ['ll', 'lc', 'ls', 'bazinga', 'dnsit', 'less', 'churn']
-task = str(task)
 
 if done == 0:
-    if task in alias:
-        if task == 'll':
-            task = 'colorls -lA --sd'
-        elif task == 'lc':
-            task = 'colorls -A --sd'
-        elif task == 'ls':
-            task = 'colorls'
-        elif task == 'bazinga':
-            task = 'sh /home/jinx/scripts/xfce4.sh'
-        elif task == 'dnsit':
-            task = 'echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null'
-        elif task == "less":
-            task = 'smartless'
-        elif task == 'churn':
-            task = 'bash tools/run.sh --trace'
     os.system(task)
     done += 1
     print('')
