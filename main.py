@@ -8,7 +8,7 @@ SERVER = os.environ.get('SERVER_MODE')
 
 
 # Checking if it is running on CI server
-if SERVER = 1:
+if SERVER == 1:
     pass
 
 # The main function to send the message
