@@ -14,6 +14,9 @@ BUILD_LOG = os.environ.get('TRAVIS_JOB_WEB_URL')
 HOME_PATH = os.environ.get('HOME')
 BUILD_TYPE = os.environ.get('TRAVIS_EVENT_TYPE')
 
+print(SERVER_OWN, SERVER, BUILD_ID, BUILD_LOG, HOME_PATH, BUILD_TYPE)
+
+
 # --- Constants ---
 
 # -- Time --
@@ -61,8 +64,8 @@ def get_logs(LOG_URL):
 # Checking if it is running on CI server
 if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
-    telegram_bot_sendtext('Build Type -->' + BUILD_TYPE)
     telegram_bot_sendtext(msg)
+    telegram_bot_sendtext('Build Type --> ' + BUILD_TYPE)
     telegram_bot_sendtext("Sending Logs 📩")
     telegram_bot_senddocs(BUILD_LOG, current_time)
     exit(0)
