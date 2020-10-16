@@ -8,6 +8,7 @@ from datetime import datetime   # Get Server time
 # --- Env Variables ---
 TOKEN = os.environ.get('BOT_TOKEN')
 SERVER = os.environ.get('CI')
+SERVER_OWN = os.environ.get('SERVER')
 BUILD_ID = os.environ.get('TRAVIS_BUILD_ID')
 BUILD_LOG = os.environ.get('TRAVIS_JOB_WEB_URL')
 HOME_PATH = os.environ.get('HOME')
@@ -58,7 +59,7 @@ def get_logs(LOG_URL):
 
 
 # Checking if it is running on CI server
-if SERVER == True:
+if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
     telegram_bot_sendtext('Build Type -->' + BUILD_TYPE)
     telegram_bot_sendtext(msg)
