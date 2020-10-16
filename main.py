@@ -9,12 +9,14 @@ from datetime import datetime   # Get Server time
 TOKEN = os.environ.get('BOT_TOKEN')
 SERVER = os.environ.get('CI')
 SERVER_OWN = os.environ.get('SERVER')
-BUILD_ID = os.environ.get('TRAVIS_BUILD_ID')
 BUILD_LOG = os.environ.get('TRAVIS_JOB_WEB_URL')
 HOME_PATH = os.environ.get('HOME')
 BUILD_TYPE = os.environ.get('TRAVIS_EVENT_TYPE')
 
-print(SERVER_OWN, SERVER, BUILD_ID, BUILD_LOG, HOME_PATH, BUILD_TYPE)
+BUILD_ID = BUILD_LOG[-9:]
+BUILD_LOG_URL = 'https://www.api.travis-ci.com/v3/job/' + BUILD_ID + '/log.txt'
+print(SERVER_OWN, SERVER, BUILD_ID, BUILD_LOG_URL,
+      BUILD_LOG, HOME_PATH, BUILD_TYPE)
 
 
 # --- Constants ---
@@ -66,8 +68,9 @@ if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
     telegram_bot_sendtext(msg)
     telegram_bot_sendtext('Build Type --> ' + BUILD_TYPE)
+    telegram_bot_sendtext('Current Build URL --> ', BUILD_LOG)
     telegram_bot_sendtext("Sending Logs 📩")
-    telegram_bot_senddocs(BUILD_LOG, current_time)
+    telegram_bot_senddocs(BUILD_LOG_URL, current_time)
     exit(0)
 
 # Arguments passed to the function
