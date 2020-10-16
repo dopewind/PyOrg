@@ -1,7 +1,7 @@
 language: python
-os:
-  - linux
-  - osx
+os: linux
+dist: focal
+
 python:
   - "3.8"
 # command to install dependencies
@@ -9,4 +9,4 @@ python:
 #   - pip install -r requirements.txt
 #   - pip install .
 # command to run tests
-script: main.py
+script: python3 main.py
