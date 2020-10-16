@@ -1,4 +1,7 @@
 language: python
+os:
+  - linux
+  - osx
 python:
   - "nightly"
 # command to install dependencies

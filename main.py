@@ -33,7 +33,7 @@ alias = {'ll': 'colorls -lA --sd',
 
 
 # Checking if it is running on CI server
-if SERVER == 1:
+if SERVER == 1 or SERVER == "1":
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
     telegram_bot_sendtext(msg)
     exit(0)
