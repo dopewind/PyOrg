@@ -4,4 +4,8 @@
 
 Automation with Python
 
+## Prerequisites
+
+    * Add Telegram Bot token as an env variable
+
 ✌
