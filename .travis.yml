@@ -3,7 +3,7 @@ os:
   - linux
   - osx
 python:
-  - "nightly"
+  - "3.8"
 # command to install dependencies
 install:
   - pip install -r requirements.txt

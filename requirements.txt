@@ -1,5 +1,3 @@
 # For main.py
-os
-sys
-requests
+sys>=2.24.0
 
