@@ -7,10 +7,6 @@ TOKEN = os.environ.get('BOT_TOKEN')
 SERVER = os.environ.get('SERVER_MODE')
 
 
-# Checking if it is running on CI server
-if SERVER == 1:
-    pass
-
 # The main function to send the message
 
 
@@ -35,6 +31,12 @@ alias = {'ll': 'colorls -lA --sd',
          'less': 'smartless',
          }
 
+
+# Checking if it is running on CI server
+if SERVER == 1:
+    msg = "Travis CI just made sure this works. Hoorayy 🚀"
+    telegram_bot_sendtext(msg)
+    exit(0)
 
 # Arguments passed to the function
 task = str(sys.argv[1])
@@ -65,7 +67,7 @@ elif quote == 1:
     msg = '''"''' + name + '''"''' + ' finished running'
 
 if done == 1:
-    test = telegram_bot_sendtext(msg)
+    telegram_bot_sendtext(msg)
     print('Done!')
 
 
