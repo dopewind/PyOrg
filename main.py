@@ -68,7 +68,7 @@ if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
     telegram_bot_sendtext(msg)
     telegram_bot_sendtext('Build Type --> ' + BUILD_TYPE)
-    telegram_bot_sendtext('Current Build URL --> ', BUILD_LOG)
+    telegram_bot_sendtext('Current Build URL --> ' + BUILD_LOG)
     telegram_bot_sendtext("Sending Logs 📩")
     telegram_bot_senddocs(BUILD_LOG_URL, current_time)
     exit(0)
