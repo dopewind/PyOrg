@@ -1,13 +1,34 @@
-import os       # Get env variables and run the given command
-import sys      # Get arguments passed to the bot
-import requests  # Send messages
+# --- Imports ---
+import os                       # Get env variables and run the given command
+import sys                      # Get arguments passed to the bot
+import requests                 # Send messages
+import urllib.request           # To download the logs
+from datetime import datetime   # Get Server time
 
-# Getting the env variables
+# --- Env Variables ---
 TOKEN = os.environ.get('BOT_TOKEN')
-SERVER = os.environ.get('SERVER_MODE')
+SERVER = os.environ.get('CI')
+BUILD_ID = os.environ.get('TRAVIS_BUILD_ID')
+BUILD_LOG = os.environ.get('TRAVIS_JOB_WEB_URL')
+HOME_PATH = os.environ.get('HOME')
+BUILD_TYPE = os.environ.get('TRAVIS_EVENT_TYPE')
 
+# --- Constants ---
 
-# The main function to send the message
+# -- Time --
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+
+# -- Aliases --
+alias = {'ll': 'colorls -lA --sd',
+         'lc': 'colorls -A --sd',
+         'ls': 'colorls',
+         'bazinga': 'sh /home/jinx/scripts/xfce4.sh',
+         'dnsit': 'echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null',
+         'less': 'smartless',
+         }
+
+# --- Functions ---
 
 
 def telegram_bot_sendtext(bot_message):
@@ -22,20 +43,27 @@ def telegram_bot_sendtext(bot_message):
     return response.json()
 
 
-# Aliases
-alias = {'ll': 'colorls -lA --sd',
-         'lc': 'colorls -A --sd',
-         'ls': 'colorls',
-         'bazinga': 'sh /home/jinx/scripts/xfce4.sh',
-         'dnsit': 'echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null',
-         'less': 'smartless',
-         }
+def telegram_bot_senddocs(doc_url, caption):
+    bot_token = TOKEN
+    bot_chatID = '1001518410'
+    send_docs = 'https://api.telegram.org/bot' + bot_token + \
+        '/sendDocument?chat_id=' + bot_chatID + 'document=' + \
+        doc_url + '&parse_mode=Markdown&caption=' + caption
+
+
+def get_logs(LOG_URL):
+    print('Beginning log download...')
+    DWL_PATH = HOME_PATH + 'log.txt'
+    urllib.request.urlretrieve(LOG_URL, DWL_PATH)
 
 
 # Checking if it is running on CI server
-if SERVER == 1 or SERVER == "1":
+if SERVER == True:
     msg = "Travis CI just made sure this works. Hoorayy 🚀"
+    telegram_bot_sendtext('Build Type -->' + BUILD_TYPE)
     telegram_bot_sendtext(msg)
+    telegram_bot_sendtext("Sending Logs 📩")
+    telegram_bot_senddocs(BUILD_LOG, current_time)
     exit(0)
 
 # Arguments passed to the function
