@@ -9,8 +9,6 @@ install:
   - pip install -r requirements.txt
 
 # command to run tests
-on:
-  - master:  
-      script: python3 main.py
-  - dev:
-      script: python3 dev/lint_all.py
+script:
+  - python3 dev/lint_all.py
+  - python3 main.py
