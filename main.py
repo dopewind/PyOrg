@@ -15,7 +15,6 @@ HOME_PATH = os.environ.get("HOME")
 BUILD_TYPE = os.environ.get("TRAVIS_EVENT_TYPE")
 BUILD_BRANCH = os.environ.get("TRAVIS_BRANCH")
 
-
 # --- Constants ---
 
 # -- Time --
@@ -28,7 +27,8 @@ alias = {
     "lc": "colorls -A --sd",
     "ls": "colorls",
     "bazinga": "sh /home/jinx/scripts/xfce4.sh",
-    "dnsit": 'echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null',
+    "dnsit":
+    'echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null',
     "less": "smartless",
 }
 
@@ -39,14 +39,9 @@ def telegram_bot_sendtext(bot_message):
 
     bot_token = str(TOKEN)
     bot_chatID = "1001518410"
-    send_text = (
-        "https://api.telegram.org/bot"
-        + bot_token
-        + "/sendMessage?chat_id="
-        + bot_chatID
-        + "&parse_mode=Markdown&text="
-        + bot_message
-    )
+    send_text = ("https://api.telegram.org/bot" + bot_token +
+                 "/sendMessage?chat_id=" + bot_chatID +
+                 "&parse_mode=Markdown&text=" + bot_message)
 
     response = requests.get(send_text)
 
@@ -61,9 +56,9 @@ def telegram_bot_senddocs(ab_local_url):
         "document": (ab_local_url, open(ab_local_url, "rb")),
     }
 
-    response = requests.post(
-        "https://api.telegram.org/bot" + bot_token + "/sendDocument", files=files
-    )
+    response = requests.post("https://api.telegram.org/bot" + bot_token +
+                             "/sendDocument",
+                             files=files)
 
 
 def get_logs(LOG_URL):
@@ -106,7 +101,6 @@ if SERVER == "true" or SERVER == True or SERVER_OWN == 1:
 task = str(sys.argv[1])
 name = str(sys.argv[2])
 
-
 done = 0
 
 task = str(task)
@@ -134,6 +128,5 @@ if done == 1:
     telegram_bot_sendtext(current_time)
     get_logs("https://api.travis-ci.com/v3/job/401186285/log.txt")
     print("Done!")
-
 
 # -------------------------------------------------------------------------------------------
