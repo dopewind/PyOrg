@@ -14,11 +14,15 @@ HOME_PATH = os.environ.get("HOME")
 BUILD_TYPE = os.environ.get("TRAVIS_EVENT_TYPE")
 BUILD_BRANCH = os.environ.get("TRAVIS_BRANCH")
 CURRENT_DIR = os.getcwd()
+LINT_STATUS = os.environ.get('lint_status')
 
 
 # --- Constants ---
 
-# -- Time --
+if LINT_STATUS == 0:
+    pass
+
+    # -- Time --
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 

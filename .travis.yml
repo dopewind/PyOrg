@@ -10,5 +10,5 @@ install:
 
 # command to run tests
 script:
-  - python3 dev/lint_all.py
+  - python3 tools/linting.py
   - python3 main.py
