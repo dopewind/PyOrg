@@ -59,7 +59,7 @@ def telegram_bot_senddocs(ab_local_url):
 
 def get_logs(LOG_URL):
     print('Beginning log download...')
-    DWL_PATH = HOME_PATH + 'log.txt'
+    DWL_PATH = HOME_PATH + '/log.txt'
     urllib.request.urlretrieve(LOG_URL, DWL_PATH)
 
 
@@ -114,6 +114,7 @@ elif quote == 1:
 
 if done == 1:
     telegram_bot_sendtext(current_time)
+    get_logs('https://api.travis-ci.com/v3/job/401186285/log.txt')
     print('Done!')
 
 
