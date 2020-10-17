@@ -55,7 +55,7 @@ def telegram_bot_senddocs(ab_local_url):
 
     response = requests.post(
         'https://api.telegram.org/bot' + bot_token + '/sendDocument', files=files)
-
+    return response
 
 def get_logs(LOG_URL):
     print('Beginning log download...')
