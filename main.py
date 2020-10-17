@@ -66,7 +66,7 @@ def get_logs(LOG_URL):
 # Checking if it is running on CI server
 if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     BUILD_ID = BUILD_LOG[-9:]
-    BUILD_LOG_URL = 'https://www.api.travis-ci.com/v3/job/' + BUILD_ID + '/log.txt'
+    BUILD_LOG_URL = 'https://api.travis-ci.com/v3/job/' + BUILD_ID + '/log.txt'
 
     print(SERVER_OWN, SERVER, BUILD_ID, BUILD_LOG_URL,
           BUILD_LOG, HOME_PATH, BUILD_TYPE, current_time)
