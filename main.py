@@ -3,7 +3,6 @@ import os  # Get env variables and run the given command
 import sys  # Get arguments passed to the bot
 import urllib.request  # To download the logs
 from datetime import datetime  # Get Server time
-
 import requests  # Send messages
 
 # --- Env Variables ---
@@ -14,6 +13,8 @@ BUILD_LOG = os.environ.get("TRAVIS_JOB_WEB_URL")
 HOME_PATH = os.environ.get("HOME")
 BUILD_TYPE = os.environ.get("TRAVIS_EVENT_TYPE")
 BUILD_BRANCH = os.environ.get("TRAVIS_BRANCH")
+CURRENT_DIR = os.getcwd()
+
 
 # --- Constants ---
 
@@ -127,7 +128,6 @@ elif quote == 1:
 
 if done == 1:
     telegram_bot_sendtext(current_time)
-    get_logs("https://api.travis-ci.com/v3/job/401186285/log.txt")
     print("Done!")
 
 # -------------------------------------------------------------------------------------------

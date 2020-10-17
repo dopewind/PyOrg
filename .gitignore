@@ -1,3 +1,6 @@
 __pycache__
+dev/__pycache__
+tools/__pycache__
+
 .vscode/
 Deprecated/
