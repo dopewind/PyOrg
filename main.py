@@ -68,11 +68,12 @@ if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     BUILD_ID = BUILD_LOG[-9:]
     BUILD_LOG_URL = 'https://www.api.travis-ci.com/v3/job/' + BUILD_ID + '/log.txt'
 
-    get_logs(BUILD_LOG_URL)
-
     print(SERVER_OWN, SERVER, BUILD_ID, BUILD_LOG_URL,
           BUILD_LOG, HOME_PATH, BUILD_TYPE, current_time)
 
+    get_logs(BUILD_LOG_URL)
+
+    telegram_bot_sendtext('------------------')
     telegram_bot_sendtext('New build incoming')
     telegram_bot_sendtext("Current Server Time --> " + current_time)
     telegram_bot_sendtext('Build Type --> ' + BUILD_TYPE)
@@ -81,7 +82,7 @@ if SERVER == 'true' or SERVER == True or SERVER_OWN == 1:
     telegram_bot_sendtext("Sending Logs 📩")
     telegram_bot_senddocs("/home/travis/log.txt")
     telegram_bot_sendtext("Travis CI just made sure this works. Hoorayy 🚀")
-
+    telegram_bot_sendtext('------------------')
     exit(0)
 
 # Arguments passed to the function
