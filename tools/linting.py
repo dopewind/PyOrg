@@ -6,7 +6,9 @@ from subprocess import STDOUT
 
 
 def c_lint():
-    os.chdir('/mnt/f/Github/zcall/')
+    dir_now = os.getcwd()
+    print(dir_now)
+    os.chdir(dir_now[0:len(dir_now) - 5])
     print(os.getcwd())
     py_files = glob.glob('./**/*.py', recursive=True)
     for files in py_files:
