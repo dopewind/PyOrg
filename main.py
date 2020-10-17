@@ -1,9 +1,10 @@
 # --- Imports ---
 import os  # Get env variables and run the given command
 import sys  # Get arguments passed to the bot
-import requests  # Send messages
 import urllib.request  # To download the logs
 from datetime import datetime  # Get Server time
+
+import requests  # Send messages
 
 # --- Env Variables ---
 TOKEN = os.environ.get("BOT_TOKEN")
