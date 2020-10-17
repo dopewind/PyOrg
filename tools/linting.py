@@ -18,10 +18,13 @@ def c_lint():
             print(' ')
     print(' ')
     print(py_files)
+
+    outputs = []
     for file in py_files:
         subprocess.run(['pyflakes', file],
                        stdout=subprocess.PIPE).stdout.decode('utf-8')
-    return STDOUT
+        outputs.append(STDOUT)
+    return outputs
 
 
 passed = (c_lint())
