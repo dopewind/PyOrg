@@ -14,6 +14,7 @@ BUILD_LOG = os.environ.get("TRAVIS_JOB_WEB_URL")
 HOME_PATH = os.environ.get("HOME")
 BUILD_TYPE = os.environ.get("TRAVIS_EVENT_TYPE")
 BUILD_BRANCH = os.environ.get("TRAVIS_BRANCH")
+CURRENT_DIR = os.getcwd()
 
 # --- Constants ---
 
@@ -70,6 +71,7 @@ def get_logs(LOG_URL):
 
 # Checking if it is running on CI server
 if SERVER == "true" or SERVER == True or SERVER_OWN == 1:
+
     BUILD_ID = BUILD_LOG[-9:]
     BUILD_LOG_URL = "https://api.travis-ci.com/v3/job/" + BUILD_ID + "/log.txt"
 
@@ -127,7 +129,6 @@ elif quote == 1:
 
 if done == 1:
     telegram_bot_sendtext(current_time)
-    get_logs("https://api.travis-ci.com/v3/job/401186285/log.txt")
     print("Done!")
 
 # -------------------------------------------------------------------------------------------
