@@ -3,6 +3,7 @@ import os  # Get env variables and run the given command
 import sys  # Get arguments passed to the bot
 import urllib.request  # To download the logs
 from datetime import datetime  # Get Server time
+
 import requests  # Send messages
 
 # --- Env Variables ---
@@ -14,7 +15,6 @@ HOME_PATH = os.environ.get("HOME")
 BUILD_TYPE = os.environ.get("TRAVIS_EVENT_TYPE")
 BUILD_BRANCH = os.environ.get("TRAVIS_BRANCH")
 CURRENT_DIR = os.getcwd()
-
 
 # --- Constants ---
 
